@@ -1,4 +1,5 @@
 import cv2
+import yaml
 
 
 def find_faces(img):
@@ -15,8 +16,11 @@ def find_faces(img):
             cv2.rectangle(roi_color, (ex, ey), (ex+ew, ey+eh), (0, 255, 0), 2)
     return img
 
+with open("conf.yml", "r") as f:
+    conf = yaml.load(f)
 
-image = "faces_kid.jpg"
+image = conf["folder"] + conf["image"]
+print(image)
 
 img = cv2.imread(image)
 
